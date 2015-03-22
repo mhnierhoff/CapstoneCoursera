@@ -1,0 +1,11 @@
+---
+title: "Milestone Report"
+author: "Maximilian H. Nierhoff"
+output:
+  html_document:
+    highlight: textmate
+    keep_md: yes
+    number_sections: yes
+    theme: cosmo
+    toc: yes
+---
