@@ -1,11 +1,224 @@
 ---
-title: "Milestone Report"
+title: "Capstone Project - Milestone Report"
 author: "Maximilian H. Nierhoff"
 output:
   html_document:
     highlight: textmate
     keep_md: yes
-    number_sections: yes
     theme: cosmo
     toc: yes
 ---
+
+# Introduction
+
+This milestone report will be applying data science in the area of natural language processing. The following lines addressing the data extraction, cleaning and text mining of the so called [HC Copora](http://www.corpora.heliohost.org). This report is part of the data science capstone project of [Coursera](https://www.coursera.org) and [Swiftkey](http://swiftkey.com/). The plots, code chunks and remarks will explain the reader the main steps to reach this goal. 
+
+```{r results='hide', message=FALSE, warning=FALSE, echo=FALSE}
+library(RWekajars)
+library(qdapDictionaries)
+library(qdapRegex)
+library(qdapTools)
+library(RColorBrewer)
+library(qdap)
+library(NLP)
+library(tm)
+library(SnowballC)
+library(slam)
+library(RWeka)
+library(rJava)
+library(wordcloud)
+library(stringr)
+library(DT)
+library(stringi)
+library(googleVis)
+```
+
+# Data Processing
+
+The data set consists of three files in US English.
+
+### Loading The Dataset 
+```{r, eval=FALSE, echo=TRUE}
+fileURL <- "http://d396qusza40orc.cloudfront.net/dsscapstone/dataset/Coursera-SwiftKey.zip"
+download.file(fileURL, destfile = "Dataset.zip", method = "curl")
+unlink(fileURL)
+unzip("Dataset.zip")
+```
+
+```{r, eval=FALSE, echo=FALSE}
+blogs <- readLines("./final/en_US/en_US.blogs.txt", encoding = "UTF-8", skipNul=TRUE)
+news <- readLines("./final/en_US/en_US.news.txt", encoding = "UTF-8", skipNul=TRUE)
+twitter <- readLines("./final/en_US/en_US.twitter.txt", encoding = "UTF-8", skipNul=TRUE)
+```
+
+### Aggreagating A Data Sample
+
+In order to enable faster data processing, a data sample from all three sources was generated.
+
+```{r, eval=FALSE}
+sampleTwitter <- twitter[sample(1:length(twitter),10000)]
+sampleNews <- news[sample(1:length(news),10000)]
+sampleBlogs <- blogs[sample(1:length(blogs),10000)]
+textSample <- c(sampleTwitter,sampleNews,sampleBlogs)
+```
+
+```{r, eval=FALSE, echo=FALSE}
+## Save sample
+writeLines(textSample, "./MilestoneReport/textSample.txt")
+```
+
+```{r, eval=FALSE, echo=FALSE}
+theSampleCon <- file("./textSample.txt")
+theSample <- readLines(theSampleCon)
+close(theSampleCon)
+```
+
+# Summary Statistics
+
+```{r, eval=FALSE, echo=FALSE}
+## Checking the size and length of the files and calculate the word count
+blogsFile <- file.info("./final/en_US/en_US.blogs.txt")$size / 1024.0 / 1024.0
+newsFile <- file.info("./final/en_US/en_US.news.txt")$size / 1024.0 / 1024.0
+twitterFile <- file.info("./final/en_US/en_US.twitter.txt")$size / 1024.0 / 1024.0
+sampleFile <- file.info("./MilestoneReport/textSample.txt")$size / 1024.0 / 1024.0
+
+blogsLength <- length(blogs)
+newsLength <- length(news)
+twitterLength <- length(twitter)
+sampleLength <- length(theSample)
+
+blogsWords <- sum(sapply(gregexpr("\\S+", blogs), length))
+newsWords <- sum(sapply(gregexpr("\\S+", news), length))
+twitterWords <- sum(sapply(gregexpr("\\S+", twitter), length))
+sampleWords <- sum(sapply(gregexpr("\\S+", theSample), length))
+```
+
+```{r, eval=FALSE, echo=FALSE}
+fileSummary <- data.frame(
+        fileName = c("Blogs","News","Twitter", "Aggregated Sample"),
+        fileSize = c(round(blogsFile, digits = 2), 
+                     round(newsFile,digits = 2), 
+                     round(twitterFile, digits = 2),
+                     round(sampleFile, digits = 2)),
+        lineCount = c(blogsLength, newsLength, twitterLength, sampleLength),
+        wordCount = c(blogsWords, newsWords, twitterWords, sampleLength)                  
+)
+```
+
+```{r, eval=FALSE, echo=FALSE}
+colnames(fileSummary) <- c("File Name", "File Size in Megabyte", "Line Count", "Word Count")
+
+saveRDS(fileSummary, file = "./MilestoneReport/fileSummary.Rda")
+```
+
+```{r, eval=TRUE, echo=FALSE}
+fileSummaryDF <- readRDS("./fileSummary.Rda")
+```
+
+The following table provides an overview of the imported data. In addition to the size of each data set, the number of lines and words are displayed. 
+
+```{r, echo=FALSE}
+knitr::kable(head(fileSummaryDF, 10))
+```
+
+```{r, eval=TRUE, echo=FALSE}
+finalCorpus <- readRDS("./finalCorpus.RDS")
+```
+
+A word cloud usually provides a first overview of the word frequencies. The word cloud displays the data of the aggregated sample file.
+
+```{r, echo=TRUE, message=FALSE, warning=FALSE}
+trigramTDM <- TermDocumentMatrix(finalCorpus)
+wcloud <- as.matrix(trigramTDM)
+v <- sort(rowSums(wcloud),decreasing=TRUE)
+d <- data.frame(word = names(v),freq=v)
+wordcloud(d$word,d$freq,
+          c(5,.3),50,
+          random.order=FALSE,
+          colors=brewer.pal(8, "Dark2"))
+```
+
+
+# Building A Clean Text Corpus
+
+By using the [tm package](http://tm.r-forge.r-project.org/index.html) the sample data gets *cleaned*. With cleaning it is meant that the text data is converted into lower case, further punction, numbers and URLs are getting removed. Next to that stop and profanity words are erased from the text sample. At the end we are getting a clean text corpus which enables an easy subsequent processing.
+
+The used profanity words can be inspected [in this Github Repository]().
+
+```{r, eval=FALSE, echo=TRUE}
+## Make it work with the new tm package
+cleanSample <- tm_map(cleanSample, content_transformer(function(x) iconv(x, to="UTF-8", sub="byte")), 
+                      mc.cores=2)
+cleanSample <- tm_map(cleanSample, content_transformer(tolower), lazy = TRUE)
+cleanSample <- tm_map(cleanSample, content_transformer(removePunctuation))
+cleanSample <- tm_map(cleanSample, content_transformer(removeNumbers))
+removeURL <- function(x) gsub("http[[:alnum:]]*", "", x) 
+cleanSample <- tm_map(cleanSample, content_transformer(removeURL))
+cleanSample <- tm_map(cleanSample, stripWhitespace)
+cleanSample <- tm_map(cleanSample, removeWords, stopwords("english"))
+cleanSample <- tm_map(cleanSample, removeWords, profanityWords)
+cleanSample <- tm_map(cleanSample, stemDocument)
+cleanSample <- tm_map(cleanSample, stripWhitespace)
+```
+
+
+```{r, eval=FALSE, echo=FALSE}
+## Saving the final corpus
+saveRDS(cleanSample, file = "./MilestoneReport/finalCorpus.RDS")
+
+finalCorpus <- readRDS("./MilestoneReport/finalCorpus.RDS")
+
+finalCorpusDF <-data.frame(text=unlist(sapply(finalCorpus,`[`, "content")), 
+                           stringsAsFactors = FALSE)
+```
+
+
+## The N-Gram Tokenization
+```{r, eval=FALSE, echo=TRUE}
+ngramTokenizer <- function(theCorpus, ngramCount) {
+        ngramFunction <- NGramTokenizer(theCorpus, 
+                                Weka_control(min = ngramCount, max = ngramCount, 
+                                delimiters = " \\r\\n\\t.,;:\"()?!"))
+        ngramFunction <- data.frame(table(ngramFunction))
+        ngramFunction <- ngramFunction[order(ngramFunction$Freq, 
+                                             decreasing = TRUE),][1:10,]
+        colnames(ngramFunction) <- c("String","Count")
+        ngramFunction
+}
+```
+
+
+### Top Unigrams
+```{r, results="asis"}
+unigram <- readRDS("./unigram.RDS")
+unigramPlot <- gvisColumnChart(unigram, "String", "Count",                  
+                            options=list(legend="none"))
+
+print(unigramPlot, "chart")
+```
+
+### Top Bigrams
+```{r, results="asis"}
+bigram <- readRDS("./bigram.RDS")
+bigramPlot <- gvisColumnChart(bigram, "String", "Count",                  
+                            options=list(legend="none"))
+
+print(bigramPlot, "chart")
+```
+
+### Top Trigrams
+```{r, results="asis"}
+trigram <- readRDS("./trigram.RDS")
+trigramPlot <- gvisColumnChart(trigram, "String", "Count",                  
+                            options=list(legend="none"))
+
+print(trigramPlot, "chart")
+```
+
+
+# Session Informations
+```{r}
+sessionInfo()
+```
+
+
