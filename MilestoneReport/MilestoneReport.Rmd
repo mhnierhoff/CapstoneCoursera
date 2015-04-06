@@ -11,7 +11,7 @@ output:
 
 # Introduction
 
-This milestone report will be applying data science in the area of natural language processing. The following lines addressing the data extraction, cleaning and text mining of the so called [HC Copora](http://www.corpora.heliohost.org). This report is part of the data science capstone project of [Coursera](https://www.coursera.org) and [Swiftkey](http://swiftkey.com/). The plots, code chunks and remarks will explain the reader the main steps to reach this goal. 
+This milestone report will be applying data science in the area of natural language processing. The following lines addressing the data extraction, cleaning and text mining of the so called [HC Copora](http://www.corpora.heliohost.org). This report is part of the data science capstone project of [Coursera](https://www.coursera.org) and [Swiftkey](http://swiftkey.com/). The plots, code chunks and remarks will explain the reader the first steps to build a prediction application.
 
 ```{r results='hide', message=FALSE, warning=FALSE, echo=FALSE}
 library(RWekajars)
@@ -143,7 +143,7 @@ wordcloud(d$word,d$freq,
 
 By using the [tm package](http://tm.r-forge.r-project.org/index.html) the sample data gets *cleaned*. With cleaning it is meant that the text data is converted into lower case, further punction, numbers and URLs are getting removed. Next to that stop and profanity words are erased from the text sample. At the end we are getting a clean text corpus which enables an easy subsequent processing.
 
-The used profanity words can be inspected [in this Github Repository]().
+The used profanity words can be inspected [in this Github Repository](https://github.com/mhnierhoff/CapstoneCoursera/blob/master/MilestoneReport/profanityfilter.txt).
 
 ```{r, eval=FALSE, echo=TRUE}
 ## Make it work with the new tm package
@@ -174,6 +174,11 @@ finalCorpusDF <-data.frame(text=unlist(sapply(finalCorpus,`[`, "content")),
 
 
 ## The N-Gram Tokenization
+
+In Natural Language Processing (NLP) an *n*-gram is a contiguous sequence of n items from a given sequence of text or speech.
+
+The following function is used to extract 1-grams, 2-grams and 2-grams from the cleaned text corpus.
+
 ```{r, eval=FALSE, echo=TRUE}
 ngramTokenizer <- function(theCorpus, ngramCount) {
         ngramFunction <- NGramTokenizer(theCorpus, 
@@ -187,6 +192,7 @@ ngramTokenizer <- function(theCorpus, ngramCount) {
 }
 ```
 
+By the usage of the tokenizer function for the *n*-grams a distribution of the following top 10 words and word combinations can be inspected. Unigrams are single words, while bigrams are two word combinations and trigrams are three word combinations.
 
 ### Top Unigrams
 ```{r, results="asis"}
@@ -215,6 +221,23 @@ trigramPlot <- gvisColumnChart(trigram, "String", "Count",
 print(trigramPlot, "chart")
 ```
 
+
+# Interesting Findings
+
++ Loading the dataset costs a lot of time. The processing is time consuming because of the huge file size of the dataset. By avoiding endless runtimes of the code, it was indispensable to create a data sample for text mining and tokenization. Nedless to say, this workaround decreases the accuracy for the subsequent predictions.
+
++ Removing all stopwords from the corpus is recommended, but, of course, stopwords are a fundamental part of languages. Therefore, consideration should be given to include these stop words in the prediction application again.
+
++ The text mining algorithm needs to be adjusted, so to speak a kind of fine-tuning. As seen in the chart of the top trigrams some words severely curtailed. For example, the second most common trigram is *presid barack obama* instead of *president barack obama*.
+
+# Next Steps For The Prediction Application
+
+As already noted, the next step of the capstone project will be to create a prediction application. 
+To create a smooth and fast application it is absolutely necessary to build a fast prediction algorithm. This is also means, I need to find ways for a faster processing of larger datasets. Next to that,  increasing the value of n for n-gram tokenization will improve the prediction accuracy. All in all a shiny application will be created which will be able to predict the next word a user wants to write.
+
+# All Used Code Scripts
+
+All used code snippets to generate this report can be viewed in this [repository](https://github.com/mhnierhoff/CapstoneCoursera/tree/master/MilestoneReport).
 
 # Session Informations
 ```{r}

@@ -3,7 +3,7 @@ Maximilian H. Nierhoff
 
 # Introduction
 
-This milestone report will be applying data science in the area of natural language processing. The following lines addressing the data extraction, cleaning and text mining of the so called [HC Copora](http://www.corpora.heliohost.org). This report is part of the data science capstone project of [Coursera](https://www.coursera.org) and [Swiftkey](http://swiftkey.com/). The plots, code chunks and remarks will explain the reader the main steps to reach this goal. 
+This milestone report will be applying data science in the area of natural language processing. The following lines addressing the data extraction, cleaning and text mining of the so called [HC Copora](http://www.corpora.heliohost.org). This report is part of the data science capstone project of [Coursera](https://www.coursera.org) and [Swiftkey](http://swiftkey.com/). The plots, code chunks and remarks will explain the reader the first steps to build a prediction application.
 
 
 
@@ -48,6 +48,7 @@ textSample <- c(sampleTwitter,sampleNews,sampleBlogs)
 
 
 
+The following table provides an overview of the imported data. In addition to the size of each data set, the number of lines and words are displayed. 
 
 
 File Name            File Size in Megabyte   Line Count   Word Count
@@ -58,6 +59,8 @@ Twitter                             159.36      2360148     30373603
 Aggregated Sample                     2.42        15000        15000
 
 
+
+A word cloud usually provides a first overview of the word frequencies. The word cloud displays the data of the aggregated sample file.
 
 
 ```r
@@ -74,14 +77,17 @@ wordcloud(d$word,d$freq,
 ![](MilestoneReport_files/figure-html/unnamed-chunk-13-1.png) 
 
 
-# Building A Clean Cleaning
+# Building A Clean Text Corpus
+
+By using the [tm package](http://tm.r-forge.r-project.org/index.html) the sample data gets *cleaned*. With cleaning it is meant that the text data is converted into lower case, further punction, numbers and URLs are getting removed. Next to that stop and profanity words are erased from the text sample. At the end we are getting a clean text corpus which enables an easy subsequent processing.
+
+The used profanity words can be inspected [in this Github Repository](https://github.com/mhnierhoff/CapstoneCoursera/blob/master/MilestoneReport/profanityfilter.txt).
 
 
 ```r
 ## Make it work with the new tm package
 cleanSample <- tm_map(cleanSample, content_transformer(function(x) iconv(x, to="UTF-8", sub="byte")), 
                       mc.cores=2)
-## Convert to lower case, remove punction, numbers, URLs, stop, profanity and stem wordson
 cleanSample <- tm_map(cleanSample, content_transformer(tolower), lazy = TRUE)
 cleanSample <- tm_map(cleanSample, content_transformer(removePunctuation))
 cleanSample <- tm_map(cleanSample, content_transformer(removeNumbers))
@@ -100,6 +106,11 @@ cleanSample <- tm_map(cleanSample, stripWhitespace)
 
 ## The N-Gram Tokenization
 
+In Natural Language Processing (NLP) an *n*-gram is a contiguous sequence of n items from a given sequence of text or speech.
+
+The following function is used to extract 1-grams, 2-grams and 2-grams from the cleaned text corpus.
+
+
 ```r
 ngramTokenizer <- function(theCorpus, ngramCount) {
         ngramFunction <- NGramTokenizer(theCorpus, 
@@ -113,6 +124,7 @@ ngramTokenizer <- function(theCorpus, ngramCount) {
 }
 ```
 
+By the usage of the tokenizer function for the *n*-grams a distribution of the following top 10 words and word combinations can be inspected. Unigrams are single words, while bigrams are two word combinations and trigrams are three word combinations.
 
 ### Top Unigrams
 
@@ -125,14 +137,14 @@ print(unigramPlot, "chart")
 ```
 
 <!-- ColumnChart generated in R 3.1.3 by googleVis 0.5.8 package -->
-<!-- Sun Mar 29 22:29:10 2015 -->
+<!-- Mon Mar 30 00:05:27 2015 -->
 
 
 <!-- jsHeader -->
 <script type="text/javascript">
  
 // jsData 
-function gvisDataColumnChartID25cb50ebedff () {
+function gvisDataColumnChartID27ac52e93a76 () {
 var data = new google.visualization.DataTable();
 var datajson =
 [
@@ -184,14 +196,14 @@ return(data);
 }
  
 // jsDrawChart
-function drawChartColumnChartID25cb50ebedff() {
-var data = gvisDataColumnChartID25cb50ebedff();
+function drawChartColumnChartID27ac52e93a76() {
+var data = gvisDataColumnChartID27ac52e93a76();
 var options = {};
 options["allowHtml"] = true;
 options["legend"] = "none";
 
     var chart = new google.visualization.ColumnChart(
-    document.getElementById('ColumnChartID25cb50ebedff')
+    document.getElementById('ColumnChartID27ac52e93a76')
     );
     chart.draw(data,options);
     
@@ -215,9 +227,9 @@ if (newPackage)
   pkgs.push(chartid);
   
 // Add the drawChart function to the global list of callbacks
-callbacks.push(drawChartColumnChartID25cb50ebedff);
+callbacks.push(drawChartColumnChartID27ac52e93a76);
 })();
-function displayChartColumnChartID25cb50ebedff() {
+function displayChartColumnChartID27ac52e93a76() {
   var pkgs = window.__gvisPackages = window.__gvisPackages || [];
   var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
   window.clearTimeout(window.__gvisLoad);
@@ -241,11 +253,11 @@ callbacks.shift()();
 </script>
  
 <!-- jsChart -->  
-<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartColumnChartID25cb50ebedff"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartColumnChartID27ac52e93a76"></script>
  
 <!-- divChart -->
   
-<div id="ColumnChartID25cb50ebedff" 
+<div id="ColumnChartID27ac52e93a76" 
   style="width: 500; height: automatic;">
 </div>
 
@@ -260,14 +272,14 @@ print(bigramPlot, "chart")
 ```
 
 <!-- ColumnChart generated in R 3.1.3 by googleVis 0.5.8 package -->
-<!-- Sun Mar 29 22:29:10 2015 -->
+<!-- Mon Mar 30 00:05:27 2015 -->
 
 
 <!-- jsHeader -->
 <script type="text/javascript">
  
 // jsData 
-function gvisDataColumnChartID25cbfd5c084 () {
+function gvisDataColumnChartID27ac2e5ab080 () {
 var data = new google.visualization.DataTable();
 var datajson =
 [
@@ -319,14 +331,14 @@ return(data);
 }
  
 // jsDrawChart
-function drawChartColumnChartID25cbfd5c084() {
-var data = gvisDataColumnChartID25cbfd5c084();
+function drawChartColumnChartID27ac2e5ab080() {
+var data = gvisDataColumnChartID27ac2e5ab080();
 var options = {};
 options["allowHtml"] = true;
 options["legend"] = "none";
 
     var chart = new google.visualization.ColumnChart(
-    document.getElementById('ColumnChartID25cbfd5c084')
+    document.getElementById('ColumnChartID27ac2e5ab080')
     );
     chart.draw(data,options);
     
@@ -350,9 +362,9 @@ if (newPackage)
   pkgs.push(chartid);
   
 // Add the drawChart function to the global list of callbacks
-callbacks.push(drawChartColumnChartID25cbfd5c084);
+callbacks.push(drawChartColumnChartID27ac2e5ab080);
 })();
-function displayChartColumnChartID25cbfd5c084() {
+function displayChartColumnChartID27ac2e5ab080() {
   var pkgs = window.__gvisPackages = window.__gvisPackages || [];
   var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
   window.clearTimeout(window.__gvisLoad);
@@ -376,11 +388,11 @@ callbacks.shift()();
 </script>
  
 <!-- jsChart -->  
-<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartColumnChartID25cbfd5c084"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartColumnChartID27ac2e5ab080"></script>
  
 <!-- divChart -->
   
-<div id="ColumnChartID25cbfd5c084" 
+<div id="ColumnChartID27ac2e5ab080" 
   style="width: 500; height: automatic;">
 </div>
 
@@ -395,14 +407,14 @@ print(trigramPlot, "chart")
 ```
 
 <!-- ColumnChart generated in R 3.1.3 by googleVis 0.5.8 package -->
-<!-- Sun Mar 29 22:29:11 2015 -->
+<!-- Mon Mar 30 00:05:28 2015 -->
 
 
 <!-- jsHeader -->
 <script type="text/javascript">
  
 // jsData 
-function gvisDataColumnChartID25cb6455cfd () {
+function gvisDataColumnChartID27ac40761387 () {
 var data = new google.visualization.DataTable();
 var datajson =
 [
@@ -454,14 +466,14 @@ return(data);
 }
  
 // jsDrawChart
-function drawChartColumnChartID25cb6455cfd() {
-var data = gvisDataColumnChartID25cb6455cfd();
+function drawChartColumnChartID27ac40761387() {
+var data = gvisDataColumnChartID27ac40761387();
 var options = {};
 options["allowHtml"] = true;
 options["legend"] = "none";
 
     var chart = new google.visualization.ColumnChart(
-    document.getElementById('ColumnChartID25cb6455cfd')
+    document.getElementById('ColumnChartID27ac40761387')
     );
     chart.draw(data,options);
     
@@ -485,9 +497,9 @@ if (newPackage)
   pkgs.push(chartid);
   
 // Add the drawChart function to the global list of callbacks
-callbacks.push(drawChartColumnChartID25cb6455cfd);
+callbacks.push(drawChartColumnChartID27ac40761387);
 })();
-function displayChartColumnChartID25cb6455cfd() {
+function displayChartColumnChartID27ac40761387() {
   var pkgs = window.__gvisPackages = window.__gvisPackages || [];
   var callbacks = window.__gvisCallbacks = window.__gvisCallbacks || [];
   window.clearTimeout(window.__gvisLoad);
@@ -511,14 +523,31 @@ callbacks.shift()();
 </script>
  
 <!-- jsChart -->  
-<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartColumnChartID25cb6455cfd"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi?callback=displayChartColumnChartID27ac40761387"></script>
  
 <!-- divChart -->
   
-<div id="ColumnChartID25cb6455cfd" 
+<div id="ColumnChartID27ac40761387" 
   style="width: 500; height: automatic;">
 </div>
 
+
+# Interesting Findings
+
++ Loading the dataset costs a lot of time. The processing is time consuming because of the huge file size of the dataset. By avoiding endless runtimes of the code, it was indispensable to create a data sample for text mining and tokenization. Nedless to say, this workaround decreases the accuracy for the subsequent predictions.
+
++ Removing all stopwords from the corpus is recommended, but, of course, stopwords are a fundamental part of languages. Therefore, consideration should be given to include these stop words in the prediction application again.
+
++ The text mining algorithm needs to be adjusted, so to speak a kind of fine-tuning. As seen in the chart of the top trigrams some words severely curtailed. For example, the second most common trigram is *presid barack obama* instead of *president barack obama*.
+
+# Next Steps For The Prediction Application
+
+As already noted, the next step of the capstone project will be to create a prediction application. 
+To create a smooth and fast application it is absolutely necessary to build a fast prediction algorithm. This is also means, I need to find ways for a faster processing of larger datasets. Next to that,  increasing the value of n for n-gram tokenization will improve the prediction accuracy. All in all a shiny application will be created which will be able to predict the next word a user wants to write.
+
+# All Used Code Scripts
+
+All used code snippets to generate this report can be viewed in this [repository](https://github.com/mhnierhoff/CapstoneCoursera/tree/master/MilestoneReport).
 
 # Session Informations
 
