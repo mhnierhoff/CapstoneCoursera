@@ -8,18 +8,23 @@
 ##                                                                            ##
 ################# ~~~~~~~~~~~~~~~~~ ######## ~~~~~~~~~~~~~~~~~ #################
 
-library(shinythemes)
-library(shiny)
-library(tm)
-library(stringr)
+suppressPackageStartupMessages(c(
+        library(shinythemes),
+        library(shiny),
+        library(tm),
+        library(stringr),
+        library(stylo)))
 
-shinyUI(navbarPage("Coursera Capstone Project", 
+shinyUI(navbarPage("Coursera Data Science Capstone", 
                    
                    theme = shinytheme("flatly"),
                    
 ############################### ~~~~~~~~~~~~~~~~~ ##############################  
      
 tabPanel("Next Word Prediction",
+         
+         tags$head(includeScript("./js/ga-shinyapps-io.js")),
+         
          fluidRow(
                  
                  column(3),

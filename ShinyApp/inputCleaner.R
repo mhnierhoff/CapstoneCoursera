@@ -8,10 +8,14 @@
 ##                                                                            ##
 ################# ~~~~~~~~~~~~~~~~~ ######## ~~~~~~~~~~~~~~~~~ #################
 
-library(tm)
-library(stylo)
+suppressPackageStartupMessages(c(
+        library(shinythemes),
+        library(shiny),
+        library(tm),
+        library(stringr),
+        library(stylo)))
 
-finalData <- readRDS(file="./finalData.RData")
+finalData <- readRDS(file="./data/finalData.RData")
 
 dataCleaner<-function(text){
         cleanText <- removePunctuation(text)
@@ -30,10 +34,10 @@ cleanInput <- function(text){
         return(textInput)
 }
 
-nextWordPrediction <- function(n,textInput){
-        if (n>=3) {
-                textInput <- textInput[(n-2):n] 
-        }else if(n==2) {
+nextWordPrediction <- function(wordCount,textInput){
+        if (wordCount>=3) {
+                textInput <- textInput[(wordCount-2):wordCount] 
+        }else if(wordCount==2) {
                 textInput <- c(NA,textInput)   
                 
         }else {
