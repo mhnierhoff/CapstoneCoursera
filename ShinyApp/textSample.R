@@ -21,4 +21,4 @@ sampleBlogs <- sample(blogs, 150000)
 textSample <- c(sampleTwitter,sampleNews,sampleBlogs)
 
 ## Save sample
-writeLines(textSample, "./ShinyApp/textSample.txt")
+writeLines(textSample, "./bigTextSample.txt")

@@ -1,0 +1,769 @@
+### SETUP PROCESS STARTED ###
+### SETUP PROCESS FINISHED ###
+
+R version 3.1.1 (2014-07-10) -- "Sock it to Me"
+Copyright (C) 2014 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> ################# ~~~~~~~~~~~~~~~~~ ######## ~~~~~~~~~~~~~~~~~ #################
+> ##                                                                            ##
+> ##                        Data Science Capstone Project                       ##
+> ##                                                                            ##            
+> ##                 Maximilian H. Nierhoff (http://nierhoff.info)              ##
+> ##                                                                            ##
+> ##           Github Repo: https://github.com/mhnierhoff/CapstoneCoursera      ##
+> ##                                                                            ##
+> ################# ~~~~~~~~~~~~~~~~~ ######## ~~~~~~~~~~~~~~~~~ #################
+> 
+> source("installpack.R")
+Installing packages into '/usr/local/lib/R/site-library'
+(as 'lib' is unspecified)
+also installing the dependencies 'openNLPdata', 'xlsxjars', 'data.table', 'gender', 'openNLP', 'reports', 'stringdist', 'venneuler', 'wordcloud', 'xlsx'
+
+trying URL 'http://cran.us.r-project.org/src/contrib/openNLPdata_1.5.3-1.tar.gz'
+Content type 'application/x-gzip' length 7318444 bytes (7.0 Mb)
+opened URL
+==================================================
+downloaded 7.0 Mb
+
+trying URL 'http://cran.us.r-project.org/src/contrib/xlsxjars_0.6.1.tar.gz'
+Content type 'application/x-gzip' length 9477071 bytes (9.0 Mb)
+opened URL
+==================================================
+downloaded 9.0 Mb
+
+trying URL 'http://cran.us.r-project.org/src/contrib/data.table_1.9.4.tar.gz'
+Content type 'application/x-gzip' length 949746 bytes (927 Kb)
+opened URL
+==================================================
+downloaded 927 Kb
+
+trying URL 'http://cran.us.r-project.org/src/contrib/gender_0.4.3.tar.gz'
+Content type 'application/x-gzip' length 111350 bytes (108 Kb)
+opened URL
+==================================================
+downloaded 108 Kb
+
+trying URL 'http://cran.us.r-project.org/src/contrib/openNLP_0.2-4.tar.gz'
+Content type 'application/x-gzip' length 6424 bytes
+opened URL
+==================================================
+downloaded 6424 bytes
+
+trying URL 'http://cran.us.r-project.org/src/contrib/reports_0.1.4.tar.gz'
+Content type 'application/x-gzip' length 429502 bytes (419 Kb)
+opened URL
+==================================================
+downloaded 419 Kb
+
+trying URL 'http://cran.us.r-project.org/src/contrib/stringdist_0.9.0.tar.gz'
+Content type 'application/x-gzip' length 44307 bytes (43 Kb)
+opened URL
+==================================================
+downloaded 43 Kb
+
+trying URL 'http://cran.us.r-project.org/src/contrib/venneuler_1.1-0.tar.gz'
+Content type 'application/x-gzip' length 45169 bytes (44 Kb)
+opened URL
+==================================================
+downloaded 44 Kb
+
+trying URL 'http://cran.us.r-project.org/src/contrib/wordcloud_2.5.tar.gz'
+Content type 'application/x-gzip' length 40861 bytes (39 Kb)
+opened URL
+==================================================
+downloaded 39 Kb
+
+trying URL 'http://cran.us.r-project.org/src/contrib/xlsx_0.5.7.tar.gz'
+Content type 'application/x-gzip' length 312839 bytes (305 Kb)
+opened URL
+==================================================
+downloaded 305 Kb
+
+trying URL 'http://cran.us.r-project.org/src/contrib/h2o_2.8.4.4.tar.gz'
+Content type 'application/x-gzip' length 145610 bytes (142 Kb)
+opened URL
+==================================================
+downloaded 142 Kb
+
+trying URL 'http://cran.us.r-project.org/src/contrib/RWekajars_3.7.12-1.tar.gz'
+Content type 'application/x-gzip' length 6465206 bytes (6.2 Mb)
+opened URL
+==================================================
+downloaded 6.2 Mb
+
+trying URL 'http://cran.us.r-project.org/src/contrib/ggplot2_1.0.1.tar.gz'
+Content type 'application/x-gzip' length 2351203 bytes (2.2 Mb)
+opened URL
+==================================================
+downloaded 2.2 Mb
+
+trying URL 'http://cran.us.r-project.org/src/contrib/qdapDictionaries_1.0.5.tar.gz'
+Content type 'application/x-gzip' length 1518083 bytes (1.4 Mb)
+opened URL
+==================================================
+downloaded 1.4 Mb
+
+trying URL 'http://cran.us.r-project.org/src/contrib/qdapRegex_0.3.2.tar.gz'
+Content type 'application/x-gzip' length 166845 bytes (162 Kb)
+opened URL
+==================================================
+downloaded 162 Kb
+
+trying URL 'http://cran.us.r-project.org/src/contrib/qdapTools_1.1.0.tar.gz'
+Content type 'application/x-gzip' length 37175 bytes (36 Kb)
+opened URL
+==================================================
+downloaded 36 Kb
+
+trying URL 'http://cran.us.r-project.org/src/contrib/RColorBrewer_1.1-2.tar.gz'
+Content type 'application/x-gzip' length 11532 bytes (11 Kb)
+opened URL
+==================================================
+downloaded 11 Kb
+
+trying URL 'http://cran.us.r-project.org/src/contrib/qdap_2.2.0.tar.gz'
+Content type 'application/x-gzip' length 2053140 bytes (2.0 Mb)
+opened URL
+==================================================
+downloaded 2.0 Mb
+
+trying URL 'http://cran.us.r-project.org/src/contrib/NLP_0.1-6.tar.gz'
+Content type 'application/x-gzip' length 111185 bytes (108 Kb)
+opened URL
+==================================================
+downloaded 108 Kb
+
+trying URL 'http://cran.us.r-project.org/src/contrib/tm_0.6.tar.gz'
+Content type 'application/x-gzip' length 505212 bytes (493 Kb)
+opened URL
+==================================================
+downloaded 493 Kb
+
+trying URL 'http://cran.us.r-project.org/src/contrib/SnowballC_0.5.1.tar.gz'
+Content type 'application/x-gzip' length 3044522 bytes (2.9 Mb)
+opened URL
+==================================================
+downloaded 2.9 Mb
+
+trying URL 'http://cran.us.r-project.org/src/contrib/slam_0.1-32.tar.gz'
+Content type 'application/x-gzip' length 46672 bytes (45 Kb)
+opened URL
+==================================================
+downloaded 45 Kb
+
+trying URL 'http://cran.us.r-project.org/src/contrib/RWeka_0.4-24.tar.gz'
+Content type 'application/x-gzip' length 409095 bytes (399 Kb)
+opened URL
+==================================================
+downloaded 399 Kb
+
+trying URL 'http://cran.us.r-project.org/src/contrib/rJava_0.9-6.tar.gz'
+Content type 'application/x-gzip' length 567515 bytes (554 Kb)
+opened URL
+==================================================
+downloaded 554 Kb
+
+* installing *source* package 'data.table' ...
+** package 'data.table' successfully unpacked and MD5 sums checked
+** libs
+gcc -std=gnu99 -I/usr/share/R/include         -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c assign.c -o assign.o
+gcc -std=gnu99 -I/usr/share/R/include         -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c bmerge.c -o bmerge.o
+gcc -std=gnu99 -I/usr/share/R/include         -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c chmatch.c -o chmatch.o
+gcc -std=gnu99 -I/usr/share/R/include         -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c dogroups.c -o dogroups.o
+gcc -std=gnu99 -I/usr/share/R/include         -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c fastmean.c -o fastmean.o
+gcc -std=gnu99 -I/usr/share/R/include         -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c fastradixdouble.c -o fastradixdouble.o
+gcc -std=gnu99 -I/usr/share/R/include         -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c fastradixint.c -o fastradixint.o
+gcc -std=gnu99 -I/usr/share/R/include         -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c fcast.c -o fcast.o
+gcc -std=gnu99 -I/usr/share/R/include         -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c fmelt.c -o fmelt.o
+gcc -std=gnu99 -I/usr/share/R/include         -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c forder.c -o forder.o
+gcc -std=gnu99 -I/usr/share/R/include         -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c frank.c -o frank.o
+gcc -std=gnu99 -I/usr/share/R/include         -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c fread.c -o fread.o
+gcc -std=gnu99 -I/usr/share/R/include         -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c gsumm.c -o gsumm.o
+gcc -std=gnu99 -I/usr/share/R/include         -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c ijoin.c -o ijoin.o
+gcc -std=gnu99 -I/usr/share/R/include         -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c init.c -o init.o
+gcc -std=gnu99 -I/usr/share/R/include         -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c rbindlist.c -o rbindlist.o
+gcc -std=gnu99 -I/usr/share/R/include         -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c reorder.c -o reorder.o
+gcc -std=gnu99 -I/usr/share/R/include         -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c uniqlist.c -o uniqlist.o
+gcc -std=gnu99 -I/usr/share/R/include         -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c vecseq.c -o vecseq.o
+gcc -std=gnu99 -I/usr/share/R/include         -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c wrappers.c -o wrappers.o
+gcc -std=gnu99 -shared -Wl,-Bsymbolic-functions -Wl,-z,relro -o data.table.so assign.o bmerge.o chmatch.o dogroups.o fastmean.o fastradixdouble.o fastradixint.o fcast.o fmelt.o forder.o frank.o fread.o gsumm.o ijoin.o init.o rbindlist.o reorder.o uniqlist.o vecseq.o wrappers.o -L/usr/lib/R/lib -lR
+mv data.table.so datatable.so
+installing to /usr/local/lib/R/site-library/data.table/libs
+** R
+** inst
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** installing vignettes
+** testing if installed package can be loaded
+* DONE (data.table)
+* installing *source* package 'gender' ...
+** package 'gender' successfully unpacked and MD5 sums checked
+** R
+** inst
+** preparing package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** installing vignettes
+** testing if installed package can be loaded
+* DONE (gender)
+* installing *source* package 'reports' ...
+** package 'reports' successfully unpacked and MD5 sums checked
+** R
+** data
+*** moving datasets to lazyload DB
+** inst
+** preparing package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** testing if installed package can be loaded
+* DONE (reports)
+* installing *source* package 'stringdist' ...
+** package 'stringdist' successfully unpacked and MD5 sums checked
+** libs
+gcc -std=gnu99 -I/usr/share/R/include        -fopenmp -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c dl.c -o dl.o
+gcc -std=gnu99 -I/usr/share/R/include        -fopenmp -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c hamming.c -o hamming.o
+gcc -std=gnu99 -I/usr/share/R/include        -fopenmp -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c jaro.c -o jaro.o
+gcc -std=gnu99 -I/usr/share/R/include        -fopenmp -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c lcs.c -o lcs.o
+gcc -std=gnu99 -I/usr/share/R/include        -fopenmp -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c lv.c -o lv.o
+gcc -std=gnu99 -I/usr/share/R/include        -fopenmp -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c osa.c -o osa.o
+gcc -std=gnu99 -I/usr/share/R/include        -fopenmp -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c qgram.c -o qgram.o
+gcc -std=gnu99 -I/usr/share/R/include        -fopenmp -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c soundex.c -o soundex.o
+gcc -std=gnu99 -I/usr/share/R/include        -fopenmp -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c utf8ToInt.c -o utf8ToInt.o
+gcc -std=gnu99 -I/usr/share/R/include        -fopenmp -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c utils.c -o utils.o
+gcc -std=gnu99 -shared -Wl,-Bsymbolic-functions -Wl,-z,relro -o stringdist.so dl.o hamming.o jaro.o lcs.o lv.o osa.o qgram.o soundex.o utf8ToInt.o utils.o -fopenmp -L/usr/lib/R/lib -lR
+installing to /usr/local/lib/R/site-library/stringdist/libs
+** R
+** inst
+** preparing package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** testing if installed package can be loaded
+* DONE (stringdist)
+* installing *source* package 'h2o' ...
+** package 'h2o' successfully unpacked and MD5 sums checked
+** R
+** demo
+** inst
+** preparing package for lazy loading
+Creating a generic function for 'summary' from package 'base' in package 'h2o'
+Creating a generic function for 'colnames' from package 'base' in package 'h2o'
+Creating a generic function for 't' from package 'base' in package 'h2o'
+Creating a generic function for 'colnames<-' from package 'base' in package 'h2o'
+Creating a generic function for 'nrow' from package 'base' in package 'h2o'
+Creating a generic function for 'ncol' from package 'base' in package 'h2o'
+Creating a generic function for 'sd' from package 'stats' in package 'h2o'
+Creating a generic function for 'var' from package 'stats' in package 'h2o'
+Creating a generic function for 'as.factor' from package 'base' in package 'h2o'
+Creating a generic function for 'is.factor' from package 'base' in package 'h2o'
+Creating a generic function for 'which' from package 'base' in package 'h2o'
+Creating a generic function for 'levels' from package 'base' in package 'h2o'
+Creating a generic function for 'apply' from package 'base' in package 'h2o'
+Creating a generic function for 'findInterval' from package 'base' in package 'h2o'
+Performing one-time download of h2o.jar from
+     http://s3.amazonaws.com/h2o-release/h2o/rel-noether/4/Rjar/h2o.jar 
+(This could take a few minutes, please be patient...)
+** help
+*** installing help indices
+** building package indices
+** testing if installed package can be loaded
+* DONE (h2o)
+* installing *source* package 'ggplot2' ...
+** package 'ggplot2' successfully unpacked and MD5 sums checked
+** R
+** data
+*** moving datasets to lazyload DB
+** inst
+** preparing package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** installing vignettes
+** testing if installed package can be loaded
+* DONE (ggplot2)
+* installing *source* package 'qdapDictionaries' ...
+** package 'qdapDictionaries' successfully unpacked and MD5 sums checked
+** R
+** data
+*** moving datasets to lazyload DB
+** inst
+** preparing package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** testing if installed package can be loaded
+* DONE (qdapDictionaries)
+* installing *source* package 'qdapRegex' ...
+** package 'qdapRegex' successfully unpacked and MD5 sums checked
+** R
+** data
+*** moving datasets to lazyload DB
+** inst
+** preparing package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** testing if installed package can be loaded
+* DONE (qdapRegex)
+* installing *source* package 'RColorBrewer' ...
+** package 'RColorBrewer' successfully unpacked and MD5 sums checked
+** R
+** inst
+** preparing package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** testing if installed package can be loaded
+* DONE (RColorBrewer)
+* installing *source* package 'NLP' ...
+** package 'NLP' successfully unpacked and MD5 sums checked
+** R
+** inst
+** preparing package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** testing if installed package can be loaded
+* DONE (NLP)
+* installing *source* package 'SnowballC' ...
+** package 'SnowballC' successfully unpacked and MD5 sums checked
+** libs
+gcc -std=gnu99 -I/usr/share/R/include         -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c api.c -o api.o
+gcc -std=gnu99 -I/usr/share/R/include         -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c libstemmer_utf8.c -o libstemmer_utf8.o
+gcc -std=gnu99 -I/usr/share/R/include         -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c stem.c -o stem.o
+gcc -std=gnu99 -I/usr/share/R/include         -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c stem_UTF_8_danish.c -o stem_UTF_8_danish.o
+gcc -std=gnu99 -I/usr/share/R/include         -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c stem_UTF_8_dutch.c -o stem_UTF_8_dutch.o
+gcc -std=gnu99 -I/usr/share/R/include         -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c stem_UTF_8_english.c -o stem_UTF_8_english.o
+gcc -std=gnu99 -I/usr/share/R/include         -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c stem_UTF_8_finnish.c -o stem_UTF_8_finnish.o
+gcc -std=gnu99 -I/usr/share/R/include         -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c stem_UTF_8_french.c -o stem_UTF_8_french.o
+gcc -std=gnu99 -I/usr/share/R/include         -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c stem_UTF_8_german.c -o stem_UTF_8_german.o
+gcc -std=gnu99 -I/usr/share/R/include         -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c stem_UTF_8_hungarian.c -o stem_UTF_8_hungarian.o
+gcc -std=gnu99 -I/usr/share/R/include         -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c stem_UTF_8_italian.c -o stem_UTF_8_italian.o
+gcc -std=gnu99 -I/usr/share/R/include         -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c stem_UTF_8_norwegian.c -o stem_UTF_8_norwegian.o
+gcc -std=gnu99 -I/usr/share/R/include         -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c stem_UTF_8_porter.c -o stem_UTF_8_porter.o
+gcc -std=gnu99 -I/usr/share/R/include         -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c stem_UTF_8_portuguese.c -o stem_UTF_8_portuguese.o
+gcc -std=gnu99 -I/usr/share/R/include         -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c stem_UTF_8_romanian.c -o stem_UTF_8_romanian.o
+gcc -std=gnu99 -I/usr/share/R/include         -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c stem_UTF_8_russian.c -o stem_UTF_8_russian.o
+gcc -std=gnu99 -I/usr/share/R/include         -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c stem_UTF_8_spanish.c -o stem_UTF_8_spanish.o
+gcc -std=gnu99 -I/usr/share/R/include         -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c stem_UTF_8_swedish.c -o stem_UTF_8_swedish.o
+gcc -std=gnu99 -I/usr/share/R/include         -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c stem_UTF_8_turkish.c -o stem_UTF_8_turkish.o
+gcc -std=gnu99 -I/usr/share/R/include         -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c utilities.c -o utilities.o
+gcc -std=gnu99 -shared -Wl,-Bsymbolic-functions -Wl,-z,relro -o SnowballC.so api.o libstemmer_utf8.o stem.o stem_UTF_8_danish.o stem_UTF_8_dutch.o stem_UTF_8_english.o stem_UTF_8_finnish.o stem_UTF_8_french.o stem_UTF_8_german.o stem_UTF_8_hungarian.o stem_UTF_8_italian.o stem_UTF_8_norwegian.o stem_UTF_8_porter.o stem_UTF_8_portuguese.o stem_UTF_8_romanian.o stem_UTF_8_russian.o stem_UTF_8_spanish.o stem_UTF_8_swedish.o stem_UTF_8_turkish.o utilities.o -L/usr/lib/R/lib -lR
+installing to /usr/local/lib/R/site-library/SnowballC/libs
+** R
+** inst
+** preparing package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** testing if installed package can be loaded
+* DONE (SnowballC)
+* installing *source* package 'slam' ...
+** package 'slam' successfully unpacked and MD5 sums checked
+** libs
+gcc -std=gnu99 -I/usr/share/R/include         -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c apply.c -o apply.o
+gcc -std=gnu99 -I/usr/share/R/include         -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c grouped.c -o grouped.o
+gcc -std=gnu99 -I/usr/share/R/include         -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c sparse.c -o sparse.o
+gcc -std=gnu99 -I/usr/share/R/include         -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c util.c -o util.o
+gcc -std=gnu99 -shared -Wl,-Bsymbolic-functions -Wl,-z,relro -o slam.so apply.o grouped.o sparse.o util.o -lblas -lgfortran -lm -lquadmath -L/usr/lib/R/lib -lR
+installing to /usr/local/lib/R/site-library/slam/libs
+** R
+** preparing package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** testing if installed package can be loaded
+* DONE (slam)
+* installing *source* package 'rJava' ...
+** package 'rJava' successfully unpacked and MD5 sums checked
+checking for gcc... gcc -std=gnu99
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether gcc -std=gnu99 accepts -g... yes
+checking for gcc -std=gnu99 option to accept ISO C89... none needed
+checking how to run the C preprocessor... gcc -std=gnu99 -E
+checking for grep that handles long lines and -e... /bin/grep
+checking for egrep... /bin/grep -E
+checking for ANSI C header files... yes
+checking for sys/wait.h that is POSIX.1 compatible... yes
+checking for sys/types.h... yes
+checking for sys/stat.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for memory.h... yes
+checking for strings.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for unistd.h... yes
+checking for string.h... (cached) yes
+checking sys/time.h usability... yes
+checking sys/time.h presence... yes
+checking for sys/time.h... yes
+checking for unistd.h... (cached) yes
+checking for an ANSI C-conforming const... yes
+checking whether time.h and sys/time.h may both be included... yes
+configure: checking whether gcc -std=gnu99 supports static inline...
+yes
+checking whether setjmp.h is POSIX.1 compatible... yes
+checking whether sigsetjmp is declared... yes
+checking whether siglongjmp is declared... yes
+checking Java support in R... present:
+interpreter : '/usr/bin/java'
+archiver    : '/usr/bin/jar'
+compiler    : '/usr/bin/javac'
+header prep.: '/usr/bin/javah'
+cpp flags   : '-I/usr/lib/jvm/java-7-openjdk-amd64/jre/../include'
+java libs   : '-L/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/server -ljvm'
+checking whether Java run-time works... yes
+checking whether -Xrs is supported... yes
+checking whether JNI programs can be compiled... yes
+checking JNI data types... ok
+checking whether JRI should be compiled (autodetect)... yes
+checking whether debugging output should be enabled... no
+checking whether memory profiling is desired... no
+checking whether threads support is requested... no
+checking whether callbacks support is requested... no
+checking whether JNI cache support is requested... no
+checking whether headless init is enabled... no
+checking whether JRI is requested... yes
+configure: creating ./config.status
+config.status: creating src/Makevars
+config.status: creating R/zzz.R
+config.status: creating src/config.h
+=== configuring in jri (/tmp/RtmpjSVRZ0/R.INSTALL189621d6935/rJava/jri)
+configure: running /bin/bash ./configure --disable-option-checking '--prefix=/usr/local'  --cache-file=/dev/null --srcdir=.
+checking build system type... x86_64-unknown-linux-gnu
+checking host system type... x86_64-unknown-linux-gnu
+checking for gcc... gcc -std=gnu99
+checking for C compiler default output file name... a.out
+checking whether the C compiler works... yes
+checking whether we are cross compiling... no
+checking for suffix of executables... 
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether gcc -std=gnu99 accepts -g... yes
+checking for gcc -std=gnu99 option to accept ISO C89... none needed
+checking how to run the C preprocessor... gcc -std=gnu99 -E
+checking for grep that handles long lines and -e... /bin/grep
+checking for egrep... /bin/grep -E
+checking for ANSI C header files... yes
+checking whether Java interpreter works... checking whether JNI programs can be compiled... yes
+checking whether JNI programs can be run... yes
+checking JNI data types... ok
+checking whether Rinterface.h exports R_CStackXXX variables... yes
+checking whether Rinterface.h exports R_SignalHandlers... yes
+configure: creating ./config.status
+config.status: creating src/Makefile
+config.status: creating Makefile
+config.status: creating run
+config.status: creating src/config.h
+** libs
+gcc -std=gnu99 -I/usr/share/R/include    -I. -I/usr/lib/jvm/java-7-openjdk-amd64/jre/../include     -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c Rglue.c -o Rglue.o
+gcc -std=gnu99 -I/usr/share/R/include    -I. -I/usr/lib/jvm/java-7-openjdk-amd64/jre/../include     -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c arrayc.c -o arrayc.o
+gcc -std=gnu99 -I/usr/share/R/include    -I. -I/usr/lib/jvm/java-7-openjdk-amd64/jre/../include     -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c callJNI.c -o callJNI.o
+gcc -std=gnu99 -I/usr/share/R/include    -I. -I/usr/lib/jvm/java-7-openjdk-amd64/jre/../include     -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c callback.c -o callback.o
+gcc -std=gnu99 -I/usr/share/R/include    -I. -I/usr/lib/jvm/java-7-openjdk-amd64/jre/../include     -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c fields.c -o fields.o
+gcc -std=gnu99 -I/usr/share/R/include    -I. -I/usr/lib/jvm/java-7-openjdk-amd64/jre/../include     -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c init.c -o init.o
+gcc -std=gnu99 -I/usr/share/R/include    -I. -I/usr/lib/jvm/java-7-openjdk-amd64/jre/../include     -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c jri_glue.c -o jri_glue.o
+gcc -std=gnu99 -I/usr/share/R/include    -I. -I/usr/lib/jvm/java-7-openjdk-amd64/jre/../include     -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c loader.c -o loader.o
+gcc -std=gnu99 -I/usr/share/R/include    -I. -I/usr/lib/jvm/java-7-openjdk-amd64/jre/../include     -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c otables.c -o otables.o
+gcc -std=gnu99 -I/usr/share/R/include    -I. -I/usr/lib/jvm/java-7-openjdk-amd64/jre/../include     -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c rJava.c -o rJava.o
+gcc -std=gnu99 -I/usr/share/R/include    -I. -I/usr/lib/jvm/java-7-openjdk-amd64/jre/../include     -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c tools.c -o tools.o
+gcc -std=gnu99 -shared -Wl,-Bsymbolic-functions -Wl,-z,relro -o rJava.so Rglue.o arrayc.o callJNI.o callback.o fields.o init.o jri_glue.o loader.o otables.o rJava.o tools.o -L/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/server -ljvm -L/usr/lib/R/lib -lR
+(cd ../jri && make)
+make[1]: Entering directory `/tmp/RtmpjSVRZ0/R.INSTALL189621d6935/rJava/jri'
+make -C src JRI.jar
+make[2]: Entering directory `/tmp/RtmpjSVRZ0/R.INSTALL189621d6935/rJava/jri/src'
+/usr/bin/javac -target 1.4 -source 1.4 -d . ../Mutex.java ../RBool.java ../RConsoleOutputStream.java ../REXP.java ../RFactor.java ../RList.java ../RMainLoopCallbacks.java ../RVector.java ../Rengine.java ../package-info.java
+warning: [options] bootstrap class path not set in conjunction with -source 1.4
+1 warning
+/usr/bin/javah -d . -classpath . org.rosuda.JRI.Rengine
+gcc -std=gnu99 -c -o Rengine.o Rengine.c -g -Iinclude  -DRIF_HAS_CSTACK -DRIF_HAS_RSIGHAND -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -I/usr/lib/jvm/java-7-openjdk-amd64/jre/../include  -fpic -I/usr/lib/jvm/java-7-openjdk-amd64/jre/../include -I/usr/share/R/include -I/usr/share/R/include
+gcc -std=gnu99 -c -o jri.o jri.c -g -Iinclude  -DRIF_HAS_CSTACK -DRIF_HAS_RSIGHAND -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -I/usr/lib/jvm/java-7-openjdk-amd64/jre/../include  -fpic -I/usr/lib/jvm/java-7-openjdk-amd64/jre/../include -I/usr/share/R/include -I/usr/share/R/include
+gcc -std=gnu99 -c -o Rcallbacks.o Rcallbacks.c -g -Iinclude  -DRIF_HAS_CSTACK -DRIF_HAS_RSIGHAND -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -I/usr/lib/jvm/java-7-openjdk-amd64/jre/../include  -fpic -I/usr/lib/jvm/java-7-openjdk-amd64/jre/../include -I/usr/share/R/include -I/usr/share/R/include
+gcc -std=gnu99 -c -o Rinit.o Rinit.c -g -Iinclude  -DRIF_HAS_CSTACK -DRIF_HAS_RSIGHAND -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -I/usr/lib/jvm/java-7-openjdk-amd64/jre/../include  -fpic -I/usr/share/R/include -I/usr/share/R/include
+gcc -std=gnu99 -c -o globals.o globals.c -g -Iinclude  -DRIF_HAS_CSTACK -DRIF_HAS_RSIGHAND -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -I/usr/lib/jvm/java-7-openjdk-amd64/jre/../include  -fpic -I/usr/lib/jvm/java-7-openjdk-amd64/jre/../include
+gcc -std=gnu99 -c -o rjava.o rjava.c -g -Iinclude  -DRIF_HAS_CSTACK -DRIF_HAS_RSIGHAND -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -I/usr/lib/jvm/java-7-openjdk-amd64/jre/../include  -fpic -I/usr/lib/jvm/java-7-openjdk-amd64/jre/../include
+rjava.c: In function 'RJava_request_lock':
+rjava.c:22:8: warning: ignoring return value of 'write', declared with attribute warn_unused_result [-Wunused-result]
+   write(ipcout, buf, sizeof(ptrlong));
+        ^
+rjava.c: In function 'RJava_clear_lock':
+rjava.c:30:8: warning: ignoring return value of 'write', declared with attribute warn_unused_result [-Wunused-result]
+   write(ipcout, buf, sizeof(ptrlong));
+        ^
+rjava.c: In function 'RJava_request_callback':
+rjava.c:39:8: warning: ignoring return value of 'write', declared with attribute warn_unused_result [-Wunused-result]
+   write(ipcout, buf, sizeof(ptrlong) * 3);
+        ^
+rjava.c: In function 'RJava_init_ctrl':
+rjava.c:51:8: warning: ignoring return value of 'write', declared with attribute warn_unused_result [-Wunused-result]
+   write(ipcout, buf, sizeof(ptrlong));
+        ^
+rjava.c:52:7: warning: ignoring return value of 'read', declared with attribute warn_unused_result [-Wunused-result]
+   read(resin, buf, sizeof(ptrlong) * 2);
+       ^
+gcc -std=gnu99 -o libjri.so Rengine.o jri.o Rcallbacks.o Rinit.o globals.o rjava.o  -shared -L/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/server -ljvm -Wl,--export-dynamic -fopenmp  -L/usr/lib/R/lib -lR -lpcre -llzma -lbz2 -lz -lrt -ldl -lm
+/usr/bin/javac -target 1.4 -source 1.4 -d . ../Mutex.java ../RBool.java ../RConsoleOutputStream.java ../REXP.java ../RFactor.java ../RList.java ../RMainLoopCallbacks.java ../RVector.java ../Rengine.java ../package-info.java
+warning: [options] bootstrap class path not set in conjunction with -source 1.4
+1 warning
+/usr/bin/jar fc JRI.jar org libjri.so
+make[2]: Leaving directory `/tmp/RtmpjSVRZ0/R.INSTALL189621d6935/rJava/jri/src'
+rm -f libjri.so
+cp src/libjri.so libjri.so
+/usr/bin/javac -target 1.4 -source 1.4 -classpath src/JRI.jar -d examples examples/rtest.java
+warning: [options] bootstrap class path not set in conjunction with -source 1.4
+Note: examples/rtest.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+1 warning
+/usr/bin/javac -target 1.4 -source 1.4 -classpath src/JRI.jar -d examples examples/rtest2.java
+warning: [options] bootstrap class path not set in conjunction with -source 1.4
+Note: examples/rtest2.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+1 warning
+make[1]: Leaving directory `/tmp/RtmpjSVRZ0/R.INSTALL189621d6935/rJava/jri'
+installing via 'install.libs.R' to /usr/local/lib/R/site-library/rJava
+** R
+** inst
+** preparing package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** testing if installed package can be loaded
+* DONE (rJava)
+* installing *source* package 'openNLPdata' ...
+** package 'openNLPdata' successfully unpacked and MD5 sums checked
+** R
+** inst
+** preparing package for lazy loading
+** help
+No man pages found in package  'openNLPdata' 
+*** installing help indices
+** building package indices
+** testing if installed package can be loaded
+* DONE (openNLPdata)
+* installing *source* package 'xlsxjars' ...
+** package 'xlsxjars' successfully unpacked and MD5 sums checked
+** R
+** inst
+** preparing package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** testing if installed package can be loaded
+* DONE (xlsxjars)
+* installing *source* package 'venneuler' ...
+** package 'venneuler' successfully unpacked and MD5 sums checked
+** R
+** inst
+** preparing package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** testing if installed package can be loaded
+* DONE (venneuler)
+* installing *source* package 'wordcloud' ...
+** package 'wordcloud' successfully unpacked and MD5 sums checked
+** libs
+g++ -I/usr/share/R/include      -I"/usr/local/lib/R/site-library/Rcpp/include"   -fpic  -O3 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2    -c layout.cpp -o layout.o
+g++ -shared -Wl,-Bsymbolic-functions -Wl,-z,relro -o wordcloud.so layout.o -L/usr/lib/R/lib -lR
+installing to /usr/local/lib/R/site-library/wordcloud/libs
+** R
+** data
+** preparing package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** testing if installed package can be loaded
+* DONE (wordcloud)
+* installing *source* package 'RWekajars' ...
+** package 'RWekajars' successfully unpacked and MD5 sums checked
+** R
+** inst
+** preparing package for lazy loading
+** help
+No man pages found in package  'RWekajars' 
+*** installing help indices
+** building package indices
+** testing if installed package can be loaded
+* DONE (RWekajars)
+* installing *source* package 'qdapTools' ...
+** package 'qdapTools' successfully unpacked and MD5 sums checked
+** R
+** inst
+** preparing package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** testing if installed package can be loaded
+* DONE (qdapTools)
+* installing *source* package 'tm' ...
+** package 'tm' successfully unpacked and MD5 sums checked
+** libs
+gcc -std=gnu99 -I/usr/share/R/include         -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c copy.c -o copy.o
+gcc -std=gnu99 -shared -Wl,-Bsymbolic-functions -Wl,-z,relro -o tm.so copy.o -L/usr/lib/R/lib -lR
+installing to /usr/local/lib/R/site-library/tm/libs
+** R
+** data
+** inst
+** preparing package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** installing vignettes
+** testing if installed package can be loaded
+* DONE (tm)
+* installing *source* package 'openNLP' ...
+** package 'openNLP' successfully unpacked and MD5 sums checked
+** R
+** preparing package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** testing if installed package can be loaded
+* DONE (openNLP)
+* installing *source* package 'xlsx' ...
+** package 'xlsx' successfully unpacked and MD5 sums checked
+** R
+** inst
+** preparing package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** installing vignettes
+** testing if installed package can be loaded
+* DONE (xlsx)
+* installing *source* package 'RWeka' ...
+** package 'RWeka' successfully unpacked and MD5 sums checked
+** R
+** inst
+** preparing package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** installing vignettes
+** testing if installed package can be loaded
+* DONE (RWeka)
+* installing *source* package 'qdap' ...
+** package 'qdap' successfully unpacked and MD5 sums checked
+** R
+** data
+*** moving datasets to lazyload DB
+** inst
+** preparing package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** installing vignettes
+** testing if installed package can be loaded
+* DONE (qdap)
+
+The downloaded source packages are in
+	'/tmp/RtmptyMI7P/downloaded_packages'
+> 
+> library(RWekajars)
+> library(ggplot2)
+> library(qdapDictionaries)
+> library(qdapRegex)
+
+Attaching package: 'qdapRegex'
+
+The following object is masked from 'package:ggplot2':
+
+    %+%
+
+> library(qdapTools)
+> library(RColorBrewer)
+> library(qdap)
+
+Attaching package: 'qdap'
+
+The following object is masked from 'package:base':
+
+    Filter
+
+> library(NLP)
+
+Attaching package: 'NLP'
+
+The following object is masked from 'package:ggplot2':
+
+    annotate
+
+> library(tm)
+
+Attaching package: 'tm'
+
+The following objects are masked from 'package:qdap':
+
+    as.DocumentTermMatrix, as.TermDocumentMatrix
+
+> library(SnowballC)
+> library(slam)
+> library(RWeka)
+> library(rJava)
+> 
+> ## Building a clean corpus
+> 
+> theSampleCon <- file("./textSample.txt")
+> theSample <- readLines(theSampleCon)
+> close(theSampleCon)
+> 
+> profanityWords <- read.table("./profanityfilter.txt", header = FALSE)
+> 
+> ## Build the corpus, and specify the source to be character vectors 
+> cleanSample <- Corpus(VectorSource(theSample))
+> 
+> ##
+> rm(theSample)
+> 
+> ## Make it work with the new tm package
+> cleanSample <- tm_map(cleanSample,
++                       content_transformer(function(x) 
++                               iconv(x, to="UTF-8", sub="byte")))
+> 
+> ## Convert to lower case
+> cleanSample <- tm_map(cleanSample, content_transformer(tolower), lazy = TRUE)
+> 
+> ## remove punction, numbers, URLs, stop, profanity and stem wordson
+> cleanSample <- tm_map(cleanSample, content_transformer(removePunctuation))
+> cleanSample <- tm_map(cleanSample, content_transformer(removeNumbers))
+> removeURL <- function(x) gsub("http[[:alnum:]]*", "", x) 
+> cleanSample <- tm_map(cleanSample, content_transformer(removeURL))
+> cleanSample <- tm_map(cleanSample, stripWhitespace)
+> cleanSample <- tm_map(cleanSample, removeWords, stopwords("english"))
+> cleanSample <- tm_map(cleanSample, removeWords, profanityWords)
+> cleanSample <- tm_map(cleanSample, stemDocument)
+> cleanSample <- tm_map(cleanSample, stripWhitespace)
+> 
+> ## Saving the final corpus
+> saveRDS(cleanSample, file = "./finalCorpus.RData")
+> 
+> 
+> ## Budilding the n-grams
+> 
+> finalCorpus <- readRData("./finalCorpus.RData")
+Error: could not find function "readRData"
+[domino] Saving output of dump.frames to 'domino.last.dump.Rda'. You can load it with R's 'debugger' function to debug your script.
+[domino] Saving your workspace to 'domino.workspace.RData' in case you want to access your intermediate results.

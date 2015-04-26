@@ -20,14 +20,15 @@ library(SnowballC)
 library(slam)
 library(RWeka)
 library(rJava)
+library(dplyr)
 
 ## Building a clean corpus
 
-theSampleCon <- file("./ShinyApp/textSample.txt")
+theSampleCon <- file("./newTextSample.txt")
 theSample <- readLines(theSampleCon)
 close(theSampleCon)
 
-profanityWords <- read.table("./ShinyApp/profanityfilter.txt", header = FALSE)
+profanityWords <- read.table("./profanityfilter.txt", header = FALSE)
 
 ## Build the corpus, and specify the source to be character vectors 
 cleanSample <- Corpus(VectorSource(theSample))
@@ -56,4 +57,19 @@ cleanSample <- tm_map(cleanSample, stemDocument)
 cleanSample <- tm_map(cleanSample, stripWhitespace)
 
 ## Saving the final corpus
-saveRDS(cleanSample, file = "./ShinyApp/finalCorpus.RDS")
+saveRDS(cleanSample, file = "./ShinyApp/finalCorpus.RData")
+
+## Load the final Corpus
+theCorpus <- readRDS(file = "./finalCorpus.RData")
+sampleTDM <- TermDocumentMatrix(theCorpus)
+saveRDS(sampleTDM, file = "./sampleTDM.RData")
+
+num <- 1000
+# Show this many top frequent terms
+
+terms <- findFreqTerms(sampleTDM)[1:num]
+sampleTDM[terms,] %>%
+        as.matrix() %>%
+        rowSums()  %>% 
+        data.frame(Term = terms, Frequency = .) %>%  
+        arrange(desc(Frequency))
