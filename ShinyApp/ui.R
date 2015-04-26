@@ -19,8 +19,9 @@ shinyUI(navbarPage("Coursera Data Science Capstone",
                    
                    theme = shinytheme("flatly"),
                    
-############################### ~~~~~~~~~~~~~~~~~ ##############################  
-     
+############################### ~~~~~~~~1~~~~~~~~ ##############################  
+## Tab 1 - Prediction
+
 tabPanel("Next Word Prediction",
          
          tags$head(includeScript("./js/ga-shinyapps-io.js")),
@@ -34,17 +35,20 @@ tabPanel("Next Word Prediction",
                                   value = ),
                         br(),
                         tags$hr(),
-                        h3("The predicted next word:"),
+                        h4("The predicted next word:"),
                         tags$strong(tags$h3(textOutput("predictedWord"))),
                         br(),
                         tags$hr(),
-                        h5("What you have entered:"),
-                        tags$em(textOutput("enteredWords")),
+                        h4("What you have entered:"),
+                        tags$em(tags$h4(textOutput("enteredWords"))),
                         align="center")
                         ),
                  column(3)
          )
 ),
+
+############################### ~~~~~~~~2~~~~~~~~ ##############################
+## Tab 2 - About 
 
 tabPanel("About This Application"),
 

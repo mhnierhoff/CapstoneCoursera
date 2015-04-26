@@ -18,11 +18,12 @@ suppressPackageStartupMessages(c(
 finalData <- readRDS(file="./data/finalData.RData")
 
 dataCleaner<-function(text){
-        cleanText <- removePunctuation(text)
+        cleanText <- tolower(text)
+        cleanText <- removePunctuation(cleanText)
         cleanText <- removeNumbers(cleanText)
         cleanText <- str_replace_all(cleanText, "[^[:alnum:]]", " ")
         cleanText <- stripWhitespace(cleanText)
-        cleanText <- tolower(cleanText)
+        cleanText <- 
         return(cleanText)
 }
 
@@ -34,7 +35,9 @@ cleanInput <- function(text){
         return(textInput)
 }
 
+
 nextWordPrediction <- function(wordCount,textInput){
+        
         if (wordCount>=3) {
                 textInput <- textInput[(wordCount-2):wordCount] 
         }else if(wordCount==2) {
@@ -49,7 +52,6 @@ nextWordPrediction <- function(wordCount,textInput){
         if(is.na(wordPrediction)) {
                 wordPrediction <- as.character(finalData[finalData$bigram==textInput[2] & 
                                         finalData$trigram==textInput[3],][1,]$quadgram)
-                
         if(is.na(wordPrediction)) {
                 wordPrediction <- as.character(finalData[finalData$trigram==textInput[3],][1,]$quadgram)                       
                 }
