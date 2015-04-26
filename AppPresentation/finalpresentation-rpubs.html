@@ -775,8 +775,18 @@ hljs.initHighlightingOnLoad();
 
 </section>
 <section data-transition="linear" data-transition-speed="default">
-<h3>The Applied Methods &amp; Algorithms</h3>
+<h3>The Applied Methods &amp; Models</h3>
 <div class="slideContent" >
+<p>After creating a data sample from the HC Corpora data, this sample was cleaned by conversion to lowercase, removing punctations, links, white space, numbers and all kinds of special characters.
+This data sample was then <a href="http://en.wikipedia.org/wiki/Tokenization_%28lexical_analysis%29">tokenized</a> into so-called <a href="http://en.wikipedia.org/wiki/N-gram"><em>n</em>-grams</a>. </p>
+
+<blockquote>
+<p>In the fields of computational linguistics and probability, an <em>n</em>-gram is a contiguous sequence of n items from a given sequence of text or speech. (<a href="http://en.wikipedia.org/wiki/N-gram">Source</a>)</p>
+</blockquote>
+
+<p>Those aggregated bi-,tri- and quadgram term frequency matrices have been transfered into a frequency dictionary.</p>
+
+<p>The resulting dats.frame is used to predict the next word in connection with the text input by a user of the described application and the frequencies of the underlying <em>n</em>-grams table.</p>
 
 </div>
 
@@ -795,9 +805,9 @@ hljs.initHighlightingOnLoad();
 <h3>Additional Information</h3>
 <div class="slideContent" >
 <ul>
-<li><p>The next word prediction app is hosted on shinyapps.io: <a href="https://nierhoff.shinyapps.io/cdsc">https://nierhoff.shinyapps.io/cdsc/</a></p></li>
-<li><p>In the case of any inaccessibility the same app is also hosted on my private shiny server: <a href="http://apps.nierhoff.info/cdsc">http://apps.nierhoff.info/cdsc/</a></p></li>
-<li><p>The whole code of this application, as well as all the steps, milestones etc. can be found in this Github repository: <a href="https://github.com/mhnierhoff/CapstoneCoursera">https://github.com/mhnierhoff/CapstoneCoursera</a></p></li>
+<li><p>The next word prediction app is hosted on shinyapps.io: <a href="https://nierhoff.shinyapps.io/cdsc">https://nierhoff.shinyapps.io/cdsc</a></p></li>
+<li><p>In the case of any inaccessibility the same app is also hosted on my private shiny server: <a href="http://apps.nierhoff.info/cdsc">http://apps.nierhoff.info/cdsc</a></p></li>
+<li><p>The whole code of this application, as well as all the milestone report, related scripts, this presentation  etc. can be found in this Github repo: <a href="https://github.com/mhnierhoff/CapstoneCoursera">https://github.com/mhnierhoff/CapstoneCoursera</a></p></li>
 <li><p>This pitch deck is located here: <a href="http://rpubs.com/nierhoff/cdsc">http://rpubs.com/nierhoff/cdsc</a></p></li>
 <li><p>Learn more about the Coursera Data Science Specialization: <a href="https://www.coursera.org/specialization/jhudatascience/1">https://www.coursera.org/specialization/jhudatascience/1</a></p></li>
 </ul>
