@@ -17,7 +17,9 @@ suppressPackageStartupMessages(c(
         library(stylo)))
 
 source("./inputCleaner.R")
-finalData <- readRDS(file="./data/final4Data.RData")
+final4Data <- readRDS(file="./data/final4Data.RData")
+final3Data <- readRDS(file="./data/final3Data.RData")
+final2Data <- readRDS(file="./data/final2Data.RData")
 
 
 shinyServer(function(input, output) {

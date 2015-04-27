@@ -41,7 +41,7 @@ tabPanel("Next Word Prediction",
                         br(),
                         tags$hr(),
                         h4("What you have entered:"),
-                        tags$h4(textOutput("enteredWords")),
+                        tags$em(tags$h4(textOutput("enteredWords"))),
                         align="center")
                         ),
                  column(3)

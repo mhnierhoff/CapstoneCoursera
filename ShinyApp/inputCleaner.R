@@ -17,6 +17,8 @@ suppressPackageStartupMessages(c(
         library(stylo)))
 
 final4Data <- readRDS(file="./data/final4Data.RData")
+final3Data <- readRDS(file="./data/final3Data.RData")
+final2Data <- readRDS(file="./data/final2Data.RData")
 
 dataCleaner<-function(text){
         
@@ -49,25 +51,27 @@ nextWordPrediction <- function(wordCount,textInput){
         
         else if(wordCount==2) {
                 textInput <- c(NA,textInput)   
-                
         }
         
         else {
                 textInput <- c(NA,NA,textInput)
         }
         
+        
+        ### 1 ###
         wordPrediction <- as.character(final4Data[final4Data$unigram==textInput[1] & 
-                                        final4Data$bigram==textInput[2] & 
-                                        final4Data$trigram==textInput[3],][1,]$quadgram)
+                                                          final4Data$bigram==textInput[2] & 
+                                                          final4Data$trigram==textInput[3],][1,]$quadgram)
         
         if(is.na(wordPrediction)) {
-                wordPrediction <- as.character(final4Data[final4Data$bigram==textInput[2] & 
-                                        final4Data$trigram==textInput[3],][1,]$quadgram)
-        
+                wordPrediction1 <- as.character(final3Data[final3Data$unigram==textInput[2] & 
+                                                                   final3Data$bigram==textInput[3],][1,]$trigram)
+                
                 if(is.na(wordPrediction)) {
-                wordPrediction <- as.character(final4Data[final4Data$trigram==textInput[3],][1,]$quadgram)
+                        wordPrediction <- as.character(final2Data[final2Data$unigram==textInput[3],][1,]$bigram)
                 }
-        } 
+        }
+        
         
         print(wordPrediction)
         
