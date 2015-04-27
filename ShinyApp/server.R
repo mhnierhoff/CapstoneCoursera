@@ -13,10 +13,11 @@ suppressPackageStartupMessages(c(
         library(shiny),
         library(tm),
         library(stringr),
+        library(markdown),
         library(stylo)))
 
 source("./inputCleaner.R")
-finalData <- readRDS(file="./data/finalData.RData")
+finalData <- readRDS(file="./data/final4Data.RData")
 
 
 shinyServer(function(input, output) {
@@ -28,5 +29,5 @@ shinyServer(function(input, output) {
                 wordPrediction <- nextWordPrediction(wordCount,textInput)})
         
         output$predictedWord <- renderPrint(wordPrediction())
-        output$enteredWords<- renderPrint({ input$text })
+        output$enteredWords <- renderText({ input$text }, quoted = FALSE)
 })

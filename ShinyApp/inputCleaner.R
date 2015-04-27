@@ -13,9 +13,10 @@ suppressPackageStartupMessages(c(
         library(shiny),
         library(tm),
         library(stringr),
+        library(markdown),
         library(stylo)))
 
-finalData <- readRDS(file="./data/finalData.RData")
+final4Data <- readRDS(file="./data/final4Data.RData")
 
 dataCleaner<-function(text){
         
@@ -50,20 +51,21 @@ nextWordPrediction <- function(wordCount,textInput){
                 textInput <- c(NA,textInput)   
                 
         }
+        
         else {
                 textInput <- c(NA,NA,textInput)
         }
         
-        wordPrediction <- as.character(finalData[finalData$unigram==textInput[1] & 
-                                        finalData$bigram==textInput[2] & 
-                                        finalData$trigram==textInput[3],][1,]$quadgram)
+        wordPrediction <- as.character(final4Data[final4Data$unigram==textInput[1] & 
+                                        final4Data$bigram==textInput[2] & 
+                                        final4Data$trigram==textInput[3],][1,]$quadgram)
         
         if(is.na(wordPrediction)) {
-                wordPrediction <- as.character(finalData[finalData$bigram==textInput[2] & 
-                                        finalData$trigram==textInput[3],][1,]$quadgram)
+                wordPrediction <- as.character(final4Data[final4Data$bigram==textInput[2] & 
+                                        final4Data$trigram==textInput[3],][1,]$quadgram)
         
                 if(is.na(wordPrediction)) {
-                wordPrediction <- as.character(finalData[finalData$trigram==textInput[3],][1,]$quadgram)
+                wordPrediction <- as.character(final4Data[final4Data$trigram==textInput[3],][1,]$quadgram)
                 }
         } 
         

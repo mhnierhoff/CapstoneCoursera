@@ -13,6 +13,7 @@ suppressPackageStartupMessages(c(
         library(shiny),
         library(tm),
         library(stringr),
+        library(markdown),
         library(stylo)))
 
 shinyUI(navbarPage("Coursera Data Science Capstone", 
@@ -40,7 +41,7 @@ tabPanel("Next Word Prediction",
                         br(),
                         tags$hr(),
                         h4("What you have entered:"),
-                        tags$em(tags$h4(textOutput("enteredWords"))),
+                        tags$h4(textOutput("enteredWords")),
                         align="center")
                         ),
                  column(3)
@@ -50,7 +51,16 @@ tabPanel("Next Word Prediction",
 ############################### ~~~~~~~~2~~~~~~~~ ##############################
 ## Tab 2 - About 
 
-tabPanel("About This Application"),
+tabPanel("About This Application",
+         fluidRow(
+                 column(2,
+                        p("")),
+                 column(8,
+                        includeMarkdown("./about/about.md")),
+                 column(2,
+                        p(""))
+         )
+),
 
 ############################### ~~~~~~~~F~~~~~~~~ ##############################
 
@@ -70,11 +80,11 @@ tags$span(style="color:grey",
                       ("Built with"), tags$a(
                               href="http://www.r-project.org/",
                               target="_blank",
-                              "R,"),
-                      tags$a(
+                              "R"),
+                      ("&"), tags$a(
                               href="http://shiny.rstudio.com",
                               target="_blank",
-                              "Shiny"),
+                              "Shiny."),
 #                       ("&"), tags$a(
 #                               href="http://www.rstudio.com/products/shiny/shiny-server",
 #                               target="_blank",
